@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>waargenomen species op kaart</title>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+     <script src="/js/naamBevat.js" type="module"></script>
+   
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet/dist/leaflet.css"
+/>
+
+    <link rel="icon" href="/images/drone.png" />
+  </head>
+  <body class="bg-dark">
+    <div class="container py-4">
+      <div class="row">
+        <!-- Linkerkolom: Zoeken op naam -->
+        <div class="col-12 col-lg-6 mb-5 mb-lg-0">
+          <div class="row">
+            <div class="col-12 text-white-50 text-center h1">
+              waarnemingen monitor
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-12 text-white-50 h5 text-center">
+              karakters:
+              <input
+                type="text"
+                class="bg-secondary text-white-50 form-control-sm d-inline-block w-auto"
+                id="woord"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <div id="woordFout" class="fout text-danger text-center" hidden>
+                minstens 1 karakter invullen!
+              </div>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-12">
+              <button
+                id="zoek"
+                type="button"
+                class="btn btn-secondary text-white-50 mt-2"
+              >
+                zoek species
+              </button>
+            </div>
+          </div>
+          <!-- Tabel verpakt in table-responsive voor mobiel -->
+          <div class="table-responsive">
+            <table
+              class="table table-striped table-bordered table-dark mt-3"
+              id="waarnemingenTable"
+              hidden
+            >
+              <thead>
+                <tr>
+                  <th>date</th>
+                  <th>id</th>
+                  <th>lat</th>
+                  <th>lng</th>
+                  <th>specienaam</th>
+                </tr>
+              </thead>
+              <tbody id="waarnemingenBody"></tbody>
+            </table>
+          </div>
+
+          <div id="storing" class="fout text-danger mt-2" hidden>
+            Storing, contacteer a moeder.
+          </div>
+          <div id="mededeling" class="mededeling text-white-50 mt-2" hidden>
+            geen resultaat gevonden.
+          </div>
+          <div id="status" class="status text-info mt-2" hidden>bezig...</div>
+        </div>
+
+        <!-- Tussenruimte alleen op grote schermen zichtbaar -->
+        <div class="col-lg-1 d-none d-lg-block"></div>
+
+        <!-- Rechterkolom: Ranglijst -->
+        <div class="col-12 col-lg-5">
+          <div class="row">
+            <div class="col-12 text-white-50 text-center h1">
+              kaartlocaties waarnemingen
+            </div>
+          </div>
+          <div id="kaart" style="height: 500px"></div>
+          <div id="storingKaart" class="fout text-danger mt-2" hidden>
+            Storing, contacteer a moeder.
+          </div>
+          <div
+            id="mededelingKaart"
+            class="mededeling text-white-50 mt-2"
+            hidden
+          >
+            geen resultaat gevonden.
+          </div>
+          <div id="statusKaart" class="status text-info mt-2" hidden>
+            bezig...
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
