@@ -32,7 +32,7 @@ navigator.geolocation.getCurrentPosition(
             fillOpacity: 0.7
         })
         .addTo(map)
-        .bindPopup(`U bevindt zich hier (${Math.round(accuracy)} m)`);
+        .bindPopup(`U bevindt zich hier (${Math.round(accuracy)} m)`).openPopup();
 
         // Toont de foutmarge
         L.circle([lat, lng], {
